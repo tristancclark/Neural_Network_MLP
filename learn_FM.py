@@ -9,6 +9,7 @@ from sklearn.metrics import explained_variance_score
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
 
+# specify data paths
 dataset_path = "./FM_dataset.dat"
 model_path = "./model_FM.pth"
 
@@ -42,6 +43,7 @@ def prepare_data(dataset):
     targets = torch.from_numpy(dataset[:, 3:])
     return inputs, targets
 
+
 def predict_hidden(test_dataset):
     """
     Description: returns the model saved at model_path prediction from
@@ -71,15 +73,25 @@ def evaluate_architecture(predictions, data_val):
                      explained variance score
                     )
     """
-    # 1. extract targets and convert predictions to numpy array
+    # 1. extract targets and convert data to numpy array
     inputs, targets = prepare_data(data_val)
+    targets = targets.numpy()
     predictions = predictions.data.numpy()
 
+    # f = open("predictions.txt", "a")
+    # for i in range(len(predictions)):
+    #     print("predictions: ", predictions[i].astype(int))
+    #     print("targets    : ", targets[i].astype(int))
+    #     print("---------------------------------------------")
+    #     f.write("\npredictions: " + np.array2string(predictions[i].astype(int)))
+    #     f.write("\ntargets    : " + np.array2string(targets[i].astype(int)))
+    #     f.write("\n---------------------------------------------")
+
     # 2. calculate scores
-    rsquared = r2_score(targets.numpy(), predictions)
-    v_score = explained_variance_score(targets.numpy(), predictions)
-    mse = mean_squared_error(targets.numpy(), predictions)
-    mae = mean_absolute_error(targets.numpy(), predictions)
+    rsquared = r2_score(targets, predictions)
+    v_score = explained_variance_score(targets, predictions)
+    mse = mean_squared_error(targets, predictions)
+    mae = mean_absolute_error(targets, predictions)
 
     return (mse, math.sqrt(mse), mae, rsquared, v_score)
 
