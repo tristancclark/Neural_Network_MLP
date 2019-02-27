@@ -1,5 +1,6 @@
 import numpy as np
 import pickle
+import math
 
 
 def xavier_init(size, gain=1.0):
