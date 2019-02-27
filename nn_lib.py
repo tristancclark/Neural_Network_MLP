@@ -94,6 +94,12 @@ class SigmoidLayer(Layer):
     def __init__(self):
         self._cache_current = None
 
+    def sigmoid_function(self, x):
+        return 1/(1 + math.exp(-x))
+
+    def sigmoid_diff(self, x):
+        return self.sigmoid_function(x)*(1 - self.sigmoid_function(x))
+
     def forward(self, x):
         f = np.vectorize(self.sigmoid_function)
         self._cache_current = x
