@@ -444,7 +444,6 @@ class Preprocessor(object):
         Returns:
             {np.ndarray} normalized dataset.
         """
-        data_copy = np.copy(data)
         return (data_copy - self._xMin)/(self._xMax - self._xMin)
 
     def revert(self, data):
@@ -457,7 +456,6 @@ class Preprocessor(object):
         Returns:
             {np.ndarray} reverted dataset.
         """
-        data_copy = np.copy(data)
         return self._xMin + data_copy*(self._xMax - self._xMin)
 
 
@@ -481,6 +479,10 @@ def example_main():
     y_val = y[split_idx:]
 
     prep_input = Preprocessor(x_train)
+
+    print(x_train[0])
+    print(prep_input.apply(x_train[0]))
+    print(prep_input.revert(prep_input.apply(x_train[0])))
 
     x_train_pre = prep_input.apply(x_train)
     x_val_pre = prep_input.apply(x_val)
