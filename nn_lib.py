@@ -444,7 +444,7 @@ class Preprocessor(object):
         Returns:
             {np.ndarray} normalized dataset.
         """
-        return (data_copy - self._xMin)/(self._xMax - self._xMin)
+        return (data - self._xMin)/(self._xMax - self._xMin)
 
     def revert(self, data):
         """
@@ -456,7 +456,7 @@ class Preprocessor(object):
         Returns:
             {np.ndarray} reverted dataset.
         """
-        return self._xMin + data_copy*(self._xMax - self._xMin)
+        return self._xMin + data*(self._xMax - self._xMin)
 
 
 def example_main():
