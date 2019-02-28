@@ -480,10 +480,6 @@ def example_main():
 
     prep_input = Preprocessor(x_train)
 
-    print(x_train[0])
-    print(prep_input.apply(x_train[0]))
-    print(prep_input.revert(prep_input.apply(x_train[0])))
-
     x_train_pre = prep_input.apply(x_train)
     x_val_pre = prep_input.apply(x_val)
 

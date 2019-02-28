@@ -78,15 +78,6 @@ def evaluate_architecture(predictions, data_val):
     targets = targets.numpy()
     predictions = predictions.data.numpy()
 
-    # f = open("predictions.txt", "a")
-    # for i in range(len(predictions)):
-    #     print("predictions: ", predictions[i].astype(int))
-    #     print("targets    : ", targets[i].astype(int))
-    #     print("---------------------------------------------")
-    #     f.write("\npredictions: " + np.array2string(predictions[i].astype(int)))
-    #     f.write("\ntargets    : " + np.array2string(targets[i].astype(int)))
-    #     f.write("\n---------------------------------------------")
-
     # 2. calculate scores
     rsquared = r2_score(targets, predictions)
     v_score = explained_variance_score(targets, predictions)
