@@ -94,11 +94,11 @@ def print_scores(scores):
     Returns:     none
     """
     print(
-           "SCORES: " + "\n" +
-           "MSE: " + str(scores[0]) + "\n" +
-           "RMSE: " + str(scores[1]) + "\n" +
-           "MAE: " + str(scores[2]) + "\n" +
-           "R-Squared: " + str(scores[3]) + "\n" +
+           "SCORES             " + "\n" +
+           "MSE               : " + str(scores[0]) + "\n" +
+           "RMSE              : " + str(scores[1]) + "\n" +
+           "MAE               : " + str(scores[2]) + "\n" +
+           "R-Squared         : " + str(scores[3]) + "\n" +
            "Explained Variance: " + str(scores[4]) + "\n" +
            "-------------------------------------------------------------" + "\n"
          )
